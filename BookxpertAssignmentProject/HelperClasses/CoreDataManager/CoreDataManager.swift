@@ -9,17 +9,20 @@ import Foundation
 import CoreData
 import UIKit
 
+/// Core Data Entity
 enum Entity: String {
     case userEntity = "UserEntity"
     case homeEntity = "HomeEntity"
 }
 
+/// Core Data Common Model for both Entity
 struct HomeEntityDataModel {
     let id: String?
     let name: String?
     let email: String?
 }
 
+/// Core Data Manager Class responsible for `Save Fetch Delete Update`
 class CoreDataManager {
     static let shared = CoreDataManager()
     private init() {}

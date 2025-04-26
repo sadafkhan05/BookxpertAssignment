@@ -9,15 +9,21 @@ import UIKit
 
 class TableViewCell: UITableViewCell {
 
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var deleteBtnRef: UIButton!
+    
+    var deleteClouser: VoidClosure?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    func configureCell(data: HomeDataModel) {
+        titleLabel.text = data.name ?? ""
     }
     
+    @IBAction func deleteBtnTap(_ sender: Any) {
+        deleteClouser?()
+    }
 }

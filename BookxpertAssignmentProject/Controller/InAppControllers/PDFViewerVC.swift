@@ -6,24 +6,37 @@
 //
 
 import UIKit
+import WebKit
 
 class PDFViewerVC: UIViewController {
 
+    @IBOutlet weak var webView: WKWebView!
+    
+    var pdfUrl: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        loadPdf()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func backBtnTap(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
-    */
+    
+}
 
+// MARK: - Load PDF To WebView
+extension PDFViewerVC {
+    func loadPdf() {
+        if let pdfUrl {
+            guard let url: URL = URL(string: pdfUrl) else {
+                self.showAlert(msg: AlertConstant.invalidPdfUrl.value())
+                return
+            }
+            webView.load(URLRequest(url: url))
+        } else {
+            self.showAlert(msg: AlertConstant.noPdfFound.value())
+        }
+        
+    }
 }

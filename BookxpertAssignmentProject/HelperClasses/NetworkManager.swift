@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+struct NetworkManager {
+    static let apiUrl = "https://api.restful-api.dev/objects"
+}

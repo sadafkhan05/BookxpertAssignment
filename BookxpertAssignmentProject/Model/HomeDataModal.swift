@@ -6,3 +6,14 @@
 //
 
 import Foundation
+
+struct HomeDataModel: Codable {
+    let id: String?
+    let name: String?
+    let data: DeviceDetails?
+}
+
+struct DeviceDetails: Codable {
+    let color: String?
+    let capacity: String?
+}
